@@ -13,6 +13,8 @@ set expandtab
 set autoindent
 set statusline=[FORMATO=%{&ff}]\ [TIPO=%y]\ [linha=%04l,%04v][%p%%]\ [LINHAS=%L]\ [COD=%{&fenc}]\ %F%m%r%h%w
 set shiftwidth=4
+set number
+set mouse=a
 syntax on
 
 let g:ConqueTerm_Color=1
