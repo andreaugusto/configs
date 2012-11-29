@@ -1,0 +1,5 @@
+set editing-mode vi
+set show-all-if-ambiguous on
+set expand-tilde on
+
+\C-l: clear-screen
