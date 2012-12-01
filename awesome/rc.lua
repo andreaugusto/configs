@@ -27,7 +27,7 @@ beautiful.init(theme_path)
 im = "pidgin"
 browser = "chromium"
 mail = "thunderbird"
-terminal = "xterm"
+terminal = "xterm -bg black -fg white"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -51,7 +51,7 @@ layouts =
     awful.layout.suit.max,
 --    awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
---    awful.layout.suit.floating
+    awful.layout.suit.floating
 }
 
 -- Define if we want to use titlebar on all applications.
