@@ -1,3 +1,9 @@
 [submodule "zsh/oh-my-zsh"]
 	path = zsh/oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh/
+[submodule "vim/plugins/vim-pathogen"]
+	path = vim/plugins/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen
+[submodule "vim/plugins/VimPdb"]
+	path = vim/plugins/VimPdb
+	url = git://github.com/vim-scripts/VimPdb
