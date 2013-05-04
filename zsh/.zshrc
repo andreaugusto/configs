@@ -6,7 +6,10 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
-ZSH_THEME="clean"
+ZSH_THEME="nicoulaj"
+#ZSH_THEME="miloshadzic"
+#ZSH_THEME="clean"
+#ZSH_THEME="cloud"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -33,7 +36,7 @@ export UPDATE_ZSH_DAYS=13
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git battery django gitfast screen vi-mode virtualenvwrapper python pip)
+plugins=(git git-remote-branch git-extras django screen vi-mode virtualenvwrapper python pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,8 +45,10 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bi
 
 # Mine
 
+bindkey "^R" history-incremental-search-backward
+
 # XTerm transparency
-[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+# [ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
 # History file
 HISTFILE=~/.histfile
@@ -79,3 +84,17 @@ alias la='ls -A'
 
 #zle -N zle-line-init
 #zle -N zle-keymap-select
+
+# Setting up the VirtualEnv
+export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi
+
