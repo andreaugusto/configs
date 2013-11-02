@@ -5,17 +5,20 @@ filetype plugin on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+set rtp+=~/code/thirds/powerline/powerline/bindings/vim
 
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
 Bundle 'klen/python-mode'
+Bundle 'kien/ctrlp.vim'
 
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 set guifont=Source\ Code\ Pro\ for\ Powerline
 set laststatus=2
+set t_Co=256
+let g:Powerline_symbols = 'unicode'
 
 " The bundles you install will be listed here
 filetype plugin indent on
@@ -27,7 +30,6 @@ augroup vimrc_autocmds
     autocmd FileType python match Excess /\%120v.*/
     autocmd FileType python set nowrap
 augroup END
-
 
 set encoding=utf-8 
 "set fileformat=unix
@@ -75,6 +77,8 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+map <c-t> <Esc>:tabnew<CR>
 
 " Python Mode
 " Activate rope
