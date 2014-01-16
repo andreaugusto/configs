@@ -36,12 +36,12 @@ export UPDATE_ZSH_DAYS=13
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-remote-branch git-extras django screen vi-mode virtualenvwrapper python pip)
+plugins=(git git-remote-branch git-extras django vi-mode python)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/usr/local/virtuoso-opensource/bin/
+#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/usr/local/virtuoso-opensource/bin/
 
 # Mine
 
@@ -90,9 +90,6 @@ function my_ip {
 
 # Setting up the VirtualEnv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
 
 if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
@@ -100,5 +97,12 @@ else
     echo "WARNING: Can't find virtualenvwrapper.sh"
 fi
 
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PYTHONDIR=/Library/Frameworks/Python.framework/Versions/2.7/bin
+export PYTHONPATH=$PYTHONPATH:/Library/Frameworks/Python.framework/Versions/2.7/bin
+export PYTHONPATH=$PYTHONPATH:/Users/mohsenjadidi/Library/Enthought/Canopy_64bit/User/lib/python2.7/site-packages
+export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
+
+export LC_ALL=en_US.UTF-8 
+export MYSQL_HOST=127.0.0.1

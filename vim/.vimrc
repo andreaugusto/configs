@@ -43,7 +43,7 @@ set tabstop=8
 set softtabstop=4
 set expandtab
 set autoindent
-set mouse=a
+"set mouse=a
 
 set noswapfile
 set nowrap
@@ -79,6 +79,12 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 map <c-t> <Esc>:tabnew<CR>
+
+map <Leader>p :call InsertLine()<CR>
+function! InsertLine()
+    let trace = expand("import ipdb; ipdb.set_trace()")
+    execute "normal o".trace
+endfunction
 
 " Python Mode
 " Activate rope
@@ -120,3 +126,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" Ignore some PEP8 rules
+let g:pymode_lint_ignore="E501,W601"
