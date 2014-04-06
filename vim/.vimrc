@@ -78,13 +78,9 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-map <c-t> <Esc>:tabnew<CR>
-
-map <Leader>p :call InsertLine()<CR>
-function! InsertLine()
-    let trace = expand("import ipdb; ipdb.set_trace()")
-    execute "normal o".trace
-endfunction
+"map <c-t> <Esc>:tabnew<CR>
+map <c-n> <Esc>:tabnext<CR>
+map <c-m> <Esc>:tabprevious<CR>
 
 " Python Mode
 " Activate rope
@@ -108,6 +104,7 @@ let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
+
 " Auto check on save
 let g:pymode_lint_write = 1
 
@@ -129,3 +126,26 @@ let g:pymode_folding = 0
 
 " Ignore some PEP8 rules
 let g:pymode_lint_ignore="E501,W601"
+
+" NerdTree
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
+let NERDTreeShowBookmarks=1
+map <F3> :NERDTreeToggle<CR>
+
+" Minibuffer
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+color jellybeans
+set guifont=Monaco:h12
+let g:NERDTreeWinPos = "right"
+set guioptions-=T " Removes top toolbar
+set guioptions-=r " Removes right hand scroll bar
+set go-=L " Removes left hand scroll bar
+
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
