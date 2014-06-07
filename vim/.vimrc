@@ -79,8 +79,7 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 "map <c-t> <Esc>:tabnew<CR>
-map <c-n> <Esc>:tabnext<CR>
-map <c-m> <Esc>:tabprevious<CR>
+map <c-m> <Esc>:tabnext<CR>
 
 " Python Mode
 " Activate rope
@@ -149,3 +148,19 @@ set go-=L " Removes left hand scroll bar
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
+" CtrlP
+let g:ctrlp_custom_ignore = {
+ \ 'dir': '\.git$',
+ \ 'file': '\.pyc$\|\.migration$\|\.log$\|\.json$\|\.lock$\|\.jar$\|tags$'
+ \ }
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_reuse_window = 'netrw'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_arg_map = 1
+let g:ctrlp_extensions = ['tag']
+
+map <F11> :!runctags<CR>
+nnoremap <C-]> :execute 'tj' expand('<cword>')<CR>zv
+
+set tags=tags
