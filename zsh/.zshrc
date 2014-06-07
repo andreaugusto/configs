@@ -6,7 +6,9 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
+#ZSH_THEME="arrow"
 ZSH_THEME="nicoulaj"
+#ZSH_THEME="afowler"
 #ZSH_THEME="miloshadzic"
 #ZSH_THEME="clean"
 #ZSH_THEME="cloud"
@@ -74,6 +76,10 @@ alias egrep='egrep --color=auto'
 
 alias lah='ls -lah'
 alias la='ls -A'
+
+alias runctags='1> /dev/null 2>&1 /usr/local/bin/ctags -R --python-kinds=-i -f ./tags `python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"` && /usr/local/bin/ctags -R --python-kinds=-i -f tags --append'
+
+alias ssh='TERM=xterm ssh'
 
 function my_ip {
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
