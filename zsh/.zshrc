@@ -54,8 +54,8 @@ bindkey "^R" history-incremental-search-backward
 
 # History file
 HISTFILE=~/.histfile
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 # Defaults
 export BROWSER="chromium"
@@ -98,17 +98,18 @@ function my_ip {
 export WORKON_HOME=$HOME/.virtualenvs
 
 if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper.sh > /dev/null 2>&1
 else
     echo "WARNING: Can't find virtualenvwrapper.sh"
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export PYTHONDIR=/Library/Frameworks/Python.framework/Versions/2.7/bin
-export PYTHONPATH=$PYTHONPATH:/Library/Frameworks/Python.framework/Versions/2.7/bin
-export PYTHONPATH=$PYTHONPATH:/Users/mohsenjadidi/Library/Enthought/Canopy_64bit/User/lib/python2.7/site-packages
 export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
 export LC_ALL=en_US.UTF-8 
 export MYSQL_HOST=127.0.0.1
+
+export SHELL='/bin/zsh'
+export JAVA_HOME='/usr'
