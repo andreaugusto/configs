@@ -79,7 +79,7 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 "map <c-t> <Esc>:tabnew<CR>
-map <c-m> <Esc>:tabnext<CR>
+map <c-n> <Esc>:tabnext<CR>
 
 " Python Mode
 " Activate rope
