@@ -78,6 +78,7 @@ alias lah='ls -lah'
 alias la='ls -A'
 
 alias runctags='1> /dev/null 2>&1 /usr/local/bin/ctags -R --python-kinds=-i -f ./tags `python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"` && /usr/local/bin/ctags -R --python-kinds=-i -f tags --append'
+alias mysql='mysql --auto-rehash'
 
 alias ssh='TERM=xterm ssh'
 
@@ -107,9 +108,14 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 export LC_ALL=en_US.UTF-8 
 export MYSQL_HOST=127.0.0.1
 
 export SHELL='/bin/zsh'
 export JAVA_HOME='/usr'
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
