@@ -188,4 +188,7 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" Ignore some PEP8 rules
+let g:pymode_lint_ignore="E501,W601"
 "--------------------------------------
