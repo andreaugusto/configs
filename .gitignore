@@ -1,1 +1,4 @@
 *.swp
+bundle/
+colors/
+oh-my-zsh/
