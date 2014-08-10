@@ -97,7 +97,7 @@ nmap <F8> :TagbarToggle<CR>
 map <F11> :!runctags<CR>
 
 nnoremap <C-]> :execute 'tj' expand('<cword>')<CR>zv
-nnoremap <C-c> :call NumberToggle()<CR>
+"nnoremap <C-c> :call NumberToggle()<CR>
 "--------------------------------------
 
 "Set comments--------------------------
@@ -117,13 +117,13 @@ augroup END
 "--------------------------------------
 
 "Toggle numbers------------------------
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+"function! NumberToggle()
+  "if(&relativenumber == 1)
+    "set number
+  "else
+    "set relativenumber
+  "endif
+"endfunc
 "--------------------------------------
 
 "Ctags---------------------------------
