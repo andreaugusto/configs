@@ -6,8 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
-#ZSH_THEME="arrow"
-ZSH_THEME="nicoulaj"
+ZSH_THEME="arrow"
+#ZSH_THEME="nicoulaj"
 #ZSH_THEME="afowler"
 #ZSH_THEME="miloshadzic"
 #ZSH_THEME="clean"
@@ -98,13 +98,13 @@ function my_ip {
 # Setting up the VirtualEnv
 export WORKON_HOME=$HOME/.virtualenvs
 
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh > /dev/null 2>&1
+if [[ -r /usr/bin/virtualenvwrapper.sh ]]; then
+    source /usr/bin/virtualenvwrapper.sh > /dev/null 2>&1
 else
     echo "WARNING: Can't find virtualenvwrapper.sh"
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:/home/go/bin # Add RVM to PATH for scripting
 
 export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
@@ -115,6 +115,7 @@ export MYSQL_HOST=127.0.0.1
 
 export SHELL='/bin/zsh'
 export JAVA_HOME='/usr'
+export GOPATH='/home/go'
 
 autoload -z edit-command-line
 zle -N edit-command-line

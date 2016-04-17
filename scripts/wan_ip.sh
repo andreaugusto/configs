@@ -1,3 +1,4 @@
+#!/bin/bash
 # Prints the WAN IP address. The result is cached and updated according to $update_period.
 
 run_segment() {
