@@ -18,6 +18,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'klen/python-mode'
 NeoBundle 'majutsushi/tagbar'
@@ -157,6 +158,9 @@ let g:ctrlp_extensions = ['tag']
 "ColorScheme---------------------------
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
+set background=dark
+hi Normal ctermbg=none
+let AirlineTheme="bubblegum"
 "--------------------------------------
 
 "PythonMode----------------------------
