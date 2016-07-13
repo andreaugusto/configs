@@ -5,13 +5,13 @@ tell application "System Events"
   set process_list to (name of every process)
   end tell
 
-  if process_list contains "Rdio" then
-      tell application "Rdio"
+  if process_list contains "Spotify" then
+      tell application "Spotify"
           if player state is playing then
               set track_name to name of current track
               set artist_name to artist of current track
               set album_name to album of current track
-              set now_playing to artist_name & " - " & track_name
+              set now_playing to "♪ " & artist_name & " - " & track_name
               # Uncomment if Album name is wanted
               #set now_playing to now_playing & " - " & album_name
           end if
