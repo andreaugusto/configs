@@ -14,13 +14,14 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "Bundles:
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'w0rp/ale'
+NeoBundle 'prabirshrestha/async.vim'
+NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'klen/python-mode'
+"NeoBundle 'klen/python-mode'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
@@ -58,8 +59,8 @@ set scrolloff=3
 set autoindent
 set expandtab
 set shiftround
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set tabstop=8
 set ttyfast
 
@@ -78,6 +79,13 @@ let g:Powerline_symbols = 'unicode'
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 "--------------------------------------
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
+
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype scss setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype css setlocal ts=2 sw=2 sts=0 expandtab
 
 "GUI-----------------------------------
 set guioptions-=T " Removes top toolbar
@@ -116,15 +124,64 @@ augroup vimrc_autocmds
     autocmd FileType python set nowrap
 augroup END
 "--------------------------------------
+"
+"Ale---------------------------------
+let g:ale_linters = {
+  \   'csh': ['shell'],
+  \   'cpp': ['gcc', 'cpplint', 'cppcheck', 'flawfinder'],
+  \   'go': ['gofmt', 'gometalinter'],
+  \   'html': ['tidy'],
+  \   'htmldjango': ['tidy'],
+  \   'help': [],
+  \   'perl': ['perlcritic'],
+  \   'python': ['flake8', 'mypy', 'pylint'],
+  \   'javascript': ['standard'],
+  \   'javascript.jsx': ['standard'],
+  \   'rust': ['cargo'],
+  \   'spec': [],
+  \   'text': [],
+  \   'zsh': ['shell']
+\}
 
-"Toggle numbers------------------------
-"function! NumberToggle()
-  "if(&relativenumber == 1)
-    "set number
-  "else
-    "set relativenumber
-  "endif
-"endfunc
+let g:ale_fixers = {
+  \   'python': [
+  \       'isort',
+  \       'yapf',
+  \       'remove_trailing_lines',
+  \       'trim_whitespace',
+  \       'add_blank_lines_for_python_control_statements'
+  \   ],
+  \   'javascript': [
+  \       'prettier',
+  \       'prettier_standard',
+  \       'standard',
+  \       'remove_trailing_lines',
+  \       'trim_whitespace'
+  \   ],
+  \   'javascript.jsx': [
+  \       'prettier',
+  \       'prettier_standard',
+  \       'standard',
+  \       'remove_trailing_lines',
+  \       'trim_whitespace'
+  \   ],
+  \   'cpp': [
+  \       'clang-format',
+  \       'remove_trailing_lines',
+  \       'trim_whitespace'
+  \   ]
+\}
+
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 "--------------------------------------
 
 "Ctags---------------------------------
@@ -133,7 +190,7 @@ set tags=tags
 
 "NerdTree------------------------------
 let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '\node_modules']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 "--------------------------------------
@@ -146,7 +203,7 @@ let g:airline_powerline_fonts = 1
 "CtrlP---------------------------------
 let g:ctrlp_custom_ignore = {
  \ 'dir': '\.git$',
- \ 'file': '\.pyc$\|\.migration$\|\.log$\|\.json$\|\.lock$\|\.jar$\|tags$'
+ \ 'file': '\.pyc$\|\.migration$\|\.log$\|\.json$\|\.lock$\|\.jar$\|tags|node_modules$$'
  \ }
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_reuse_window = 'netrw'
@@ -164,36 +221,36 @@ let AirlineTheme="bubblegum"
 "--------------------------------------
 
 "PythonMode----------------------------
-let g:pymode_rope = 1
+"let g:pymode_rope = 1
 
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+"" Documentation
+"let g:pymode_doc = 1
+"let g:pymode_doc_key = 'K'
 
-" Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+"" Linting
+"let g:pymode_lint = 1
+"let g:pymode_lint_checker = "pyflakes,pep8"
 
-" Auto check on save
-let g:pymode_lint_write = 1
+"" Auto check on save
+"let g:pymode_lint_write = 1
 
-" Support virtualenv
-let g:pymode_virtualenv = 1
+"" Support virtualenv
+"let g:pymode_virtualenv = 1
 
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
-let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace();  # XXX BREAKPOINT'
+"" Enable breakpoints plugin
+"let g:pymode_breakpoint = 1
+"let g:pymode_breakpoint_key = '<leader>b'
+"let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace();  # XXX BREAKPOINT'
 
-" Syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
+"" Syntax highlighting
+"let g:pymode_syntax = 1
+"let g:pymode_syntax_all = 1
+"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+"let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
-" Don't autofold code
-let g:pymode_folding = 0
+"" Don't autofold code
+"let g:pymode_folding = 0
 
-" Ignore some PEP8 rules
-let g:pymode_lint_ignore="E501,W601"
+"" Ignore some PEP8 rules
+"let g:pymode_lint_ignore="E501,W601"
 "--------------------------------------

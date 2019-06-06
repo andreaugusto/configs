@@ -1,4 +1,4 @@
-.PHONY: vim oh-my-zsh init tmux
+.PHONY: vim neovim oh-my-zsh init tmux
 
 all: init vim oh-my-zsh tmux
 
@@ -13,6 +13,9 @@ vim:
 	-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 	-mkdir -p ~/.vim/colors/
 	-git clone https://github.com/w0ng/vim-hybrid.git && ln -s `pwd`/vim-hybrid/colors/hybrid.vim ~/.vim/colors/ 
+
+neovim:
+	-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 oh-my-zsh:
 	-sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
