@@ -31,6 +31,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
+Plug 'python/black'
 
 "Required:
 call plug#end()
@@ -129,6 +130,9 @@ au FileType c,cpp,java,javascript,go let comment = '//'
 au FileType vim let comment = '"'
 "--------------------------------------
 
+"CtrlP---------------------------------
+let g:ctrlp_custom_ignore = 'node_modules\|git\|converage'
+
 "Ale---------------------------------
 let g:ale_linters = {
   \   'csh': ['shell'],
@@ -138,7 +142,6 @@ let g:ale_linters = {
   \   'htmldjango': ['tidy'],
   \   'help': [],
   \   'perl': ['perlcritic'],
-  \   'python': ['flake8', 'mypy', 'pylint'],
   \   'javascript': ['standard'],
   \   'javascript.jsx': ['standard'],
   \   'rust': ['cargo'],
@@ -149,11 +152,6 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
   \   'python': [
-  \       'isort',
-  \       'yapf',
-  \       'remove_trailing_lines',
-  \       'trim_whitespace',
-  \       'add_blank_lines_for_python_control_statements'
   \   ],
   \   'javascript': [
   \       'prettier',
@@ -184,6 +182,7 @@ let g:ale_sign_error = '✗'
 let g:ale_fix_on_save = 1
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
+set omnifunc=ale#completion#OmniFunc
 "--------------------------------------
 
 "Ctags---------------------------------
@@ -199,6 +198,7 @@ augroup END
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
             \ 'javascript': ['javascript-typescript-stdio'],
+            \ 'python': ['pyls'],
             \ }
 autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 let g:LanguageClient_loggingLevel = 'DEBUG'
