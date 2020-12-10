@@ -38,7 +38,7 @@ export UPDATE_ZSH_DAYS=13
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-remote-branch git-extras django vi-mode python history-substring-search)
+plugins=(git git-extras django vi-mode python history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,6 +106,7 @@ fi
 
 PATH=$PATH:$HOME/.rvm/bin:/home/go/bin # Add RVM to PATH for scripting
 
+export TERMINAL=xcfe4-terminal
 export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads

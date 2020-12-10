@@ -43,7 +43,7 @@ filetype plugin indent on
 syntax on
 "set t_Co=256
 
-colorscheme one
+"colorscheme one
 "set laststatus=2
 set relativenumber
 set number
