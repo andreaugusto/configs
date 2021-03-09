@@ -6,7 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
-ZSH_THEME="arrow"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="arrow"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="afowler"
 #ZSH_THEME="miloshadzic"
@@ -121,3 +122,10 @@ export GOPATH='/home/go'
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+
+# NVM
+source /usr/share/nvm/init-nvm.sh
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec

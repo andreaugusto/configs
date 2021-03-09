@@ -3,11 +3,11 @@
 DEFAULT_FOLDER=~/code/personal
 DEFAULT_CONFIG_FOLDER=$(DEFAULT_FOLDER)/configs
 
+all: init vim neovim oh-my-zsh tmux i3
+
 echo:
 	echo $(DEFAULT_FOLDER)
 	echo $(DEFAULT_CONFIG_FOLDER)
-
-all: init vim neovim oh-my-zsh tmux i3
 
 init:
 	mkdir -p $(DEFAULT_FOLDER)
