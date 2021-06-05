@@ -43,7 +43,7 @@ filetype plugin indent on
 syntax on
 "set t_Co=256
 
-"colorscheme one
+colorscheme one
 "set laststatus=2
 set relativenumber
 set number
@@ -147,11 +147,15 @@ let g:ale_linters = {
   \   'rust': ['cargo'],
   \   'spec': [],
   \   'text': [],
-  \   'zsh': ['shell']
+  \   'zsh': ['shell'],
 \}
 
 let g:ale_fixers = {
   \   'python': [
+  \       'black',
+  \       'isort',
+  \       'remove_trailing_lines',
+  \       'yapf',
   \   ],
   \   'javascript': [
   \       'prettier',
@@ -180,6 +184,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_fix_on_save = 1
+let g:ale_python_mypy_options = '--namespace-packages'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 set omnifunc=ale#completion#OmniFunc
