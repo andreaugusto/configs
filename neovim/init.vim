@@ -153,9 +153,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \   'python': [
   \       'black',
-  \       'isort',
   \       'remove_trailing_lines',
-  \       'yapf',
+  \       'isort',
   \   ],
   \   'javascript': [
   \       'prettier',
@@ -185,6 +184,7 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_fix_on_save = 1
 let g:ale_python_mypy_options = '--namespace-packages'
+let g:ale_python_pylint_options = '-d C0114,C0115,C0116'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 set omnifunc=ale#completion#OmniFunc

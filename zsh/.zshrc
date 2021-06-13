@@ -59,8 +59,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 # Defaults
-export BROWSER="chromium"
-export EDITOR="vim"
+export BROWSER="google-chrome-stable"
+export EDITOR="nvim"
 export PAGER="vimpager"
 
 # ArchLinux

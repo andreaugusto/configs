@@ -1,9 +1,9 @@
-.PHONY: vim neovim oh-my-zsh init tmux i3 zsh
+.PHONY: vim neovim oh-my-zsh init tmux i3 zsh polybar
 
 DEFAULT_FOLDER=~/code/personal
 DEFAULT_CONFIG_FOLDER=$(DEFAULT_FOLDER)/configs
 
-all: init vim neovim oh-my-zsh tmux i3
+all: init vim neovim oh-my-zsh tmux i3 polybar
 
 echo:
 	echo $(DEFAULT_FOLDER)
@@ -39,3 +39,6 @@ zsh:
 
 tmux:
 	-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+polybar:
+	-ln -s $(DEFAULT_CONFIG_FOLDER)/polybar ~/.config/
