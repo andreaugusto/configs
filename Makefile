@@ -1,4 +1,4 @@
-.PHONY: vim neovim oh-my-zsh init tmux i3 zsh polybar
+.PHONY: vim neovim oh-my-zsh init tmux i3 zsh polybar scripts
 
 DEFAULT_FOLDER=~/code/personal
 DEFAULT_CONFIG_FOLDER=$(DEFAULT_FOLDER)/configs
@@ -27,8 +27,7 @@ neovim:
 	-ln -s $(DEFAULT_CONFIG_FOLDER)/neovim/init.vim ~/.config/nvim/
 
 i3:
-	-mv ~/.i3 ~/.i3bckp
-	-ln -s $(DEFAULT_CONFIG_FOLDER)/i3/.i3 ~/
+	-ln -s $(DEFAULT_CONFIG_FOLDER)/.i3 ~/
 
 oh-my-zsh:
 	-sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -42,3 +41,6 @@ tmux:
 
 polybar:
 	-ln -s $(DEFAULT_CONFIG_FOLDER)/polybar ~/.config/
+
+scripts:
+	-ln -s ${DEFAULT_CONFIG_FOLDER}/scripts/* ~/
