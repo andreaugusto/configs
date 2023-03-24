@@ -39,7 +39,7 @@ export UPDATE_ZSH_DAYS=13
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras django vi-mode python history-substring-search)
+plugins=(git git-extras vi-mode python history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,7 +61,7 @@ SAVEHIST=1000000
 # Defaults
 export BROWSER="google-chrome-stable"
 export EDITOR="nvim"
-export PAGER="vimpager"
+export PAGER="nvimpager"
 
 # ArchLinux
 alias spacman="sudo pacman"
@@ -106,11 +106,12 @@ else
 fi
 
 PATH=$PATH:$HOME/.rvm/bin:/home/go/bin # Add RVM to PATH for scripting
+PATH="$PATH:$(yarn global bin)" # yarn bins
+PATH="$PATH:/home/asmodean/.local/share/gem/ruby/3.0.0/bin" # yarn bins
+PATH=$PATH:$HOME/.pls/pls/bin
+PATH=$PATH:$HOME/.chk/chk/bin
 
 export TERMINAL=xcfe4-terminal
-export PYTHONPATH=$PYTHONPATH:/Applications/Canopy.app/appdata/canopy-1.0.1.1189.macosx-x86_64/Canopy.app/Contents/lib/python2.7/site-packages
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
-export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 export LC_ALL=en_US.UTF-8 
 export MYSQL_HOST=127.0.0.1
@@ -118,10 +119,12 @@ export MYSQL_HOST=127.0.0.1
 export SHELL='/bin/zsh'
 export JAVA_HOME='/usr'
 export GOPATH='/home/go'
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+
 
 # NVM
 source /usr/share/nvm/init-nvm.sh

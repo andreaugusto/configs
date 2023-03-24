@@ -14,9 +14,9 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "Bundles:
-NeoBundle 'w0rp/ale'
-NeoBundle 'prabirshrestha/async.vim'
-NeoBundle 'prabirshrestha/vim-lsp'
+"NeoBundle 'w0rp/ale'
+"NeoBundle 'prabirshrestha/async.vim'
+"NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -25,7 +25,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'tpope/vim-fugitive'
 
 "Required:
 call neobundle#end()
