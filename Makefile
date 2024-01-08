@@ -44,3 +44,7 @@ polybar:
 
 scripts:
 	-ln -s ${DEFAULT_CONFIG_FOLDER}/scripts/* ~/
+
+X:
+	-ln -s $(DEFAULT_CONFIG_FOLDER)/X/.Xmodmap ~/
+
