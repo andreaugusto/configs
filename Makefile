@@ -1,4 +1,4 @@
-.PHONY: vim neovim oh-my-zsh init tmux i3 zsh polybar scripts
+.PHONY: vim neovim oh-my-zsh init tmux i3 zsh polybar scripts X
 
 DEFAULT_FOLDER=~/code/personal
 DEFAULT_CONFIG_FOLDER=$(DEFAULT_FOLDER)/configs
