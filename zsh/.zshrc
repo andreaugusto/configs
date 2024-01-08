@@ -74,6 +74,7 @@ zstyle ':completion:*:kill:*' force-list always
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias pls='~/code/vtex/ppxp/pls-cli/bin/run'
 
 alias lah='ls -lah'
 alias la='ls -A'
@@ -82,6 +83,7 @@ alias runctags='1> /dev/null 2>&1 /usr/local/bin/ctags -R --python-kinds=-i -f .
 alias mysql='mysql --auto-rehash'
 
 alias ssh='TERM=xterm ssh'
+alias vtex='~/node_modules/vtex/bin/run'
 
 function my_ip {
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'

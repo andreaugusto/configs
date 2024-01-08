@@ -45,6 +45,10 @@ Plug 'jparise/vim-graphql'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'puremourning/vimspector'
+Plug 'RRethy/vim-illuminate'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-orgmode/orgmode'
+Plug 'mfussenegger/nvim-dap'
 
 
 "Required:
@@ -114,6 +118,7 @@ autocmd Filetype yaml setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype htmldjango setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype make setlocal ts=4 sw=4 sts=0 noexpandtab autoindent
+autocmd Filetype cpp setlocal ts=2 sw=2 sts=0 expandtab autoindent
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -157,8 +162,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|git\|converage'
 let g:ale_linters = {
   \   'csh': ['shell'],
   \   'cs': ['OmniSharp'],
-  \   'cpp': ['gcc', 'cpplint', 'cppcheck', 'flawfinder'],
-  \   'go': ['gofmt', 'gometalinter'],
+  \   'cpp': ['clang++', 'cpplint', 'cppcheck', 'flawfinder'],
+  \   'go': ['gopls'],
   \   'html': ['tidy'],
   \   'htmldjango': ['tidy'],
   \   'help': [],
@@ -216,6 +221,7 @@ let g:ale_sign_error = '✗'
 let g:ale_fix_on_save = 1
 let g:ale_python_mypy_options = '--namespace-packages'
 let g:ale_python_pylint_options = '-d C0114,C0115,C0116'
+let g:ale_cpp_cc_options = '-std=c++20 -Wall -Wextra -Wpedantic -Wshadow -I/usr/local/include -I/usr/include/SDL2 -D_REENTRANT -L/usr/local/lib -ltcod'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 set omnifunc=ale#completion#OmniFunc
@@ -223,6 +229,7 @@ set omnifunc=ale#completion#OmniFunc
 "
 "OmniShapr---------------------------------
 let g:OmniSharp_server_studio = 1
+let g:OmniSharp_server_use_net6 = 1
 "nmap <Leader>td<Plug>OmniSharpDebugTest
 "nmap <Leader>tr<Plug>OmniSharpRunTest
 augroup omnisharp_commands
@@ -243,8 +250,8 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>osd <Plug>(omnisharp_documentation)
   autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
   autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_get_code_actions)
   autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
-  autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
 
   " Navigate up and down by method/property/field
   autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)
@@ -285,9 +292,14 @@ let g:LanguageClient_serverCommands = {
             \ 'typescriptreact': ['typescript-language-server', '--stdio'],
             \ 'cs': ['omnisharp'],
             \ 'python': ['pyls'],
+            \ 'cpp': ['ccls'],
+            \ 'c': ['ccls'],
+            \ 'go': ['gopls'],
             \ }
 autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 let g:LanguageClient_loggingLevel = 'DEBUG'
+" Run gofmt on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
@@ -312,7 +324,6 @@ let g:airline_theme='one'
 
 "Deoplete------------------------------
 let g:deoplete#enable_at_startup=1
-let g:deoplete_disable_auto_complete=1
 "--------------------------------------
 
 "One Theme-----------------------------
@@ -351,6 +362,7 @@ if has('termguicolors') && &termguicolors
     let g:jellybeans_overrides['background']['guibg'] = 'none'
 endif
 set background=dark
+"--------------------------------------
 
 
 "VIM JSX Typescript---------------------
@@ -371,3 +383,35 @@ nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
 nnoremap <Leader>dd :call vimspector#Launch()<CR>
 nnoremap <Leader>de :call vimspector#Reset()<CR>
 nnoremap <Leader>dc :call vimspector#Continue()<CR>
+"--------------------------------------
+
+"Vim Illuminate---------------------
+let g:Illuminate_useDeprecated = 1
+let g:Illuminate_ftblacklist = ['nerdtree']
+"--------------------------------------
+
+"Orgmode
+"ini.vim
+lua << EOF
+    -- init.lua
+    -- Load custom treesitter grammar for org filetype
+    require('orgmode').setup_ts_grammar()
+
+    -- Treesitter configuration
+    require('nvim-treesitter.configs').setup {
+    -- If TS highlights are not enabled at all, or disabled via `disable` prop,
+    -- highlighting will fallback to default Vim syntax highlighting
+    highlight = {
+        enable = true,
+        -- Required for spellcheck, some LaTex highlights and
+        -- code block highlights that do not have ts grammar
+        additional_vim_regex_highlighting = {'org'},
+    },
+    ensure_installed = {'org'}, -- Or run :TSUpdate org
+    }
+
+    require('orgmode').setup({
+    org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+    org_default_notes_file = '~/Dropbox/org/refile.org',
+    })
+EOF
